@@ -1,0 +1,106 @@
+1. 
+scala> 3.
+!=   >             floatValue      isValidInt     to               toRadians
+%    >=            floor           isValidLong    toBinaryString   toShort
+&    >>            getClass        isValidShort   toByte           unary_+
+*    >>>           intValue        isWhole        toChar           unary_-
++    ^             isInfinite      longValue      toDegrees        unary_~
+-    abs           isInfinity      max            toDouble         underlying
+/    byteValue     isNaN           min            toFloat          until
+<    ceil          isNegInfinity   round          toHexString      |
+<<   compare       isPosInfinity   self           toInt
+<=   compareTo     isValidByte     shortValue     toLong
+==   doubleValue   isValidChar     signum         toOctalString
+
+2. 
+scala> scala.math.sqrt(3)
+res1: Double = 1.7320508075688772
+
+scala> scala.math.pow(res1, 2)
+res3: Double = 2.9999999999999996
+
+3.
+scala> res3 = 5
+<console>:12: error: reassignment to val
+       res3 = 5
+
+4. 
+scala> "crazy" * 3
+res5: String = crazycrazycrazy
+
+Scaladoc: StringOps
+def *(n: Int): String
+Return the current string concatenated n times.
+
+Question: why res5 is String and not StringOps?
+
+5. 
+scala> 10 max 2
+res9: Int = 10
+
+scala> 10.max(2)
+res10: Int = 10
+
+Scaladoc: Int
+def max(that: Int): Int
+Returns this if this > that or that otherwise.
+
+6.
+scala> val big:BigInt = 2
+big: BigInt = 2
+
+scala> big.pow(1024)
+res13: scala.math.BigInt = 179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137216
+
+7.
+scala> import scala.math.BigInt._
+import scala.math.BigInt._
+
+scala> import scala.util._
+import scala.util._
+
+scala> probablePrime(100, Random)
+res17: scala.math.BigInt = 773528415075876638184462560263
+
+8.
+scala> scala.math.BigInt(1000, scala.util.Random)
+res23: scala.math.BigInt = 7864934831671092429181966579178244559315325097157822187684274942811969795894325284227680645293093259857879754508011485976751198243269413473947432599664425117423106142856781918989800155775925708313223353926353391628521098773789859861357235251900994417949240331236068087600339623344630363347899572829506
+
+scala> res23.toString(36)
+res24: String = 3dsh22uzus8jx3udq7x8rtjxsra3lfl5a9rp95boxf27m2y4id44nrb28wfl93alf7adn4lpu168sm9cqa7phb26cqbkoznp60h7ob55tw74t1k37kl61nsvksk3kz3lzqfzz734vjxqt1donbejtcprjfck01cd7imjn1v716qbqdk2zen93wpgosc1ujxq2q
+
+9. 
+scala> res24
+res25: String = 3dsh22uzus8jx3udq7x8rtjxsra3lfl5a9rp95boxf27m2y4id44nrb28wfl93alf7adn4lpu168sm9cqa7phb26cqbkoznp60h7ob55tw74t1k37kl61nsvksk3kz3lzqfzz734vjxqt1donbejtcprjfck01cd7imjn1v716qbqdk2zen93wpgosc1ujxq2q
+
+scala> res25(0)
+res32: Char = 3
+
+scala> res25.last
+res26: Char = q
+
+10.
+scala> res24
+res25: String = 3dsh22uzus8jx3udq7x8rtjxsra3lfl5a9rp95boxf27m2y4id44nrb28wfl93alf7adn4lpu168sm9cqa7phb26cqbkoznp60h7ob55tw74t1k37kl61nsvksk3kz3lzqfzz734vjxqt1donbejtcprjfck01cd7imjn1v716qbqdk2zen93wpgosc1ujxq2q
+
+scala> res25.take(10)
+res33: String = 3dsh22uzus
+//takes first 10 elements
+
+scala> res25.drop(10)
+res34: String = 8jx3udq7x8rtjxsra3lfl5a9rp95boxf27m2y4id44nrb28wfl93alf7adn4lpu168sm9cqa7phb26cqbkoznp60h7ob55tw74t1k37kl61nsvksk3kz3lzqfzz734vjxqt1donbejtcprjfck01cd7imjn1v716qbqdk2zen93wpgosc1ujxq2q
+//selects all elements except for first 10
+
+scala> res25.takeRight(10)
+res35: String = osc1ujxq2q
+//takes last 10 elements
+
+scala> res25.dropRight(10)
+res36: String = 3dsh22uzus8jx3udq7x8rtjxsra3lfl5a9rp95boxf27m2y4id44nrb28wfl93alf7adn4lpu168sm9cqa7phb26cqbkoznp60h7ob55tw74t1k37kl61nsvksk3kz3lzqfzz734vjxqt1donbejtcprjfck01cd7imjn1v716qbqdk2zen93wpg
+//selects all elements except for last 10
+
+Advantage over substring: substring is capable of slicing when indices are known. It doesn't handle requests such as 'drop 10 last indices':
+
+Scaladoc: Stringbuilder
+def substring(start: Int, end: Int): String
+Returns a new String made up of a subsequence of this sequence, beginning at the start index (inclusive) and extending to the end index (exclusive).
