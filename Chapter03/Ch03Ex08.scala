@@ -7,6 +7,6 @@ def dropNegativeButFirst(a: ArrayBuffer[Int]) = {
   a
 }
 
-val ab = ArrayBuffer(333, 2, -1, 0, 44, -3, 44, -5, 100, -100)
+val ab = ArrayBuffer(333, 2, -1, 0, 44, -3, 44, -5, 100, -100, 2, 4, -32, 3, 0, -15)
 println(ab.mkString(", "))
 println(dropNegativeButFirst(ab).mkString(", "))
