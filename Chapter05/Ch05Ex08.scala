@@ -1,36 +1,34 @@
-// For primary constructor minimalist one is chosen.
-// It allows to reuse it in auxiliary constructurs. Vice versa is not viable, as it seems.
+// For primary constructor initially minimalist one is chosen.
+// It allows to reuse it in auxiliary constructurs.
 //
-// TODO: private val in constructor exposes internal names of vals.
-// It may be a problem if constructors are used with explicit parameter names in changed order.
+// However, actually supplying 4 constructors is not necessary at all.
+// It's enough to have 1 with default values. 
 //
-class Car(private val _manufacturer: String, private val _modelName: String) {
-  private var _modelYear = -1
+// TODO: put all the tests, remake to single-primary constructor
+// Refresh knowledge of field usage in metod, pick toString (picked from other guys on GitHub)
+class Car(val manufacturer: String, val modelName: String) {
+  val modelYear = -1
   var licensePlate = ""
 
-  def this(_manufacturer: String, _modelName: String, _modelYear: Integer) {
-    this(_manufacturer, _modelName)
-    this._modelYear = _modelYear
+  def this(manufacturer: String, modelName: String, modelYear: Integer) {
+    this(manufacturer, modelName)
+    this.modelYear = _modelYear
   }
 
-  def this(_manufacturer: String, _modelName: String, licensePlate: String) {
-    this(_manufacturer, _modelName)
+  def this(manufacturer: String, modelName: String, licensePlate: String) {
+    this(manufacturer, modelName)
     this.licensePlate = licensePlate
   }
 
-  def this(_manufacturer: String, _modelName: String, _modelYear: Integer, licensePlate: String) {
-    this(_manufacturer, _modelName)
-    this._modelYear = _modelYear
+  def this(manufacturer: String, modelName: String, modelYear: Integer, licensePlate: String) {
+    this(manufacturer, modelName)
+    this.modelYear = modelYear
     this.licensePlate = licensePlate
   }
-
-  def manufacturer = _manufacturer
-  def modelName = _modelName
-  def modelYear = _modelYear
 }
 
 val corolla = new Car("Toyota", "Corolla", 1992, "AB-1992")
 println(s"${corolla.manufacturer} ${corolla.modelName} ${corolla.modelYear} ${corolla.licensePlate}")
 
-val prius = new Car(_modelName="Prius", _manufacturer="Corolla")
+val prius = new Car(modelName="Prius", manufacturer="Corolla")
 println(s"${prius.manufacturer} ${prius.modelName} ${prius.modelYear} ${prius.licensePlate}")
