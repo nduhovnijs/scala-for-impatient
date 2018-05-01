@@ -32,6 +32,6 @@ println(nick.getName())
   Renerated are getId(), getName(), setId(), setName().
 
   No, you shouldn't use getters and setters in Scala.
-  According to Scala, client shouldn't know if it's property or implementation.
+  According to Scala, client shouldn't know if it's field or method.
 
 */
