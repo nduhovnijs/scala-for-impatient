@@ -1,4 +1,4 @@
-object CardSuits extends Enumeration {
+object CardSuit extends Enumeration {
   val Hearts = Value("♥")
   val Clubs = Value("♣")
   val Spades = Value("♠")
@@ -6,10 +6,10 @@ object CardSuits extends Enumeration {
 }
 
 object Hello extends App {
-  println("Hearts: " + CardSuits.Hearts)
-  println("Clubs: " + CardSuits.Clubs)
-  println("Spades: " + CardSuits.Spades)
-  println("Diamonds: " + CardSuits.Diamonds)
+  println("Hearts: " + CardSuit.Hearts)
+  println("Clubs: " + CardSuit.Clubs)
+  println("Spades: " + CardSuit.Spades)
+  println("Diamonds: " + CardSuit.Diamonds)
 
-  println("All suits: " + CardSuits.values)
+  println("All suits: " + CardSuit.values)
 }
