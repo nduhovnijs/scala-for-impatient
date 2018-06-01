@@ -11,8 +11,7 @@ package object random {
     previousInt
   }
 
-  def nextDouble() = {
-  }
+  def nextDouble() = nextInt().toDouble
   
   def setSeed(seed: Int) {
     previousInt = seed 
@@ -21,4 +20,5 @@ package object random {
 
 object Hello extends App {
   for (i <- 0 to 9) println(random.nextInt())
+  for (i <- 0 to 9) println(random.nextDouble())
 }
