@@ -7,7 +7,7 @@ package object random {
   var previousInt:BigInt = 1
   
   def nextInt() = {
-    previousInt = (previousInt * a * b) % twoPowN
+    previousInt = (previousInt * a + b) % twoPowN
     previousInt
   }
 
@@ -19,6 +19,7 @@ package object random {
 }
 
 object Hello extends App {
+  random.setSeed((System.currentTimeMillis() / 1000).toInt)
   for (i <- 0 to 9) println(random.nextInt())
   for (i <- 0 to 9) println(random.nextDouble())
 }
