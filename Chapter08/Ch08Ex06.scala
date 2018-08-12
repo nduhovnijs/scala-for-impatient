@@ -15,8 +15,8 @@ class Circle(var x: Int, var y: Int, var radius: Int) extends Shape {
 }
 
 object Hello extends App {
-  val rectangle = new Rectangle(0, 0, 6, 4)
-  val circle = new Circle(3, 3, 6)
-  println(s"rectangle: ${rectangle.centerPoint}") 
-  println(s"circle: ${circle.centerPoint}")
+  val myRectangle = new Rectangle(0, 0, 6, 4)
+  val myCircle = new Circle(3, 3, 6)
+  println(s"rectangle: ${myRectangle.centerPoint}") 
+  println(s"circle: ${myCircle.centerPoint}")
 }
