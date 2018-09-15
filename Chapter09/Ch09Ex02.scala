@@ -2,7 +2,6 @@ import scala.io.Source
 import java.io.PrintWriter
 import scala.collection.mutable.ArrayBuffer
 
-//TODO: refactor so that not to split line 2 times
 object Main extends App {
   val source = Source.fromFile("sample.txt", "UTF-8")
   val lines = for (line <- source.getLines.toArray) yield line.split("\t")
