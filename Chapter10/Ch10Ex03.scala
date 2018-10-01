@@ -1,5 +1,8 @@
 /*
-I'll shorten excercise to drawing diagram and making linearisation of the following scala.collection.TraversableLike
+Original formulation of excercise looks very brutal. 
+Either I don't understand value of making diagram and linearisation of SUCH a big hierarchy, or hierarchy has grown from the moment when book was written.
+Or author was just in a bad misantropic mood.
+I'll shorten excercise to drawing diagram and making linearisation of scala.collection.TraversableLike and hope that I didn't miss same grand plan of initial formulation.
 
 Diagram:
 trait TraversableLike[]
