@@ -2,7 +2,7 @@ import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-trait myPropertyChangeSupport {
+trait MyPropertyChangeSupport {
   private val pcs = new PropertyChangeSupport(this) 
   
   def addPropertyChangeListener(listener: PropertyChangeListener) {
@@ -62,16 +62,16 @@ trait myPropertyChangeSupport {
   }
 }
 
-class myPropertyChangeListener extends PropertyChangeListener {
+class MyPropertyChangeListener extends PropertyChangeListener {
     def propertyChange(event: PropertyChangeEvent) {
         println("Following has been changed: " + event.getPropertyName() + " from " + event.getOldValue() + " to " + event.getNewValue());
     }
 }
 
 // I have a bit of mixed feelings about this construction, I'd rather use just extended class.
-// But this is to match formulation of task to mix in myPropertyChangeSupport with java.awt.Point more precise.
+// But this is to match formulation of task to mix in MyPropertyChangeSupport with java.awt.Point more precise.
 trait MyPoint extends java.awt.Point {
-  this: myPropertyChangeSupport =>
+  this: MyPropertyChangeSupport =>
     override def setLocation(x: Int, y: Int) {
       firePropertyChange("setLocation", (getX, getY), (x, y))
       super.setLocation(x, y)
@@ -79,8 +79,8 @@ trait MyPoint extends java.awt.Point {
 }
 
 object Main extends App {
-  val myPoint = new java.awt.Point(2, 3) with MyPoint with myPropertyChangeSupport
-  val myPropertyChangeListener = new myPropertyChangeListener()
+  val myPoint = new java.awt.Point(2, 3) with MyPoint with MyPropertyChangeSupport
+  val myPropertyChangeListener = new MyPropertyChangeListener()
   myPoint.addPropertyChangeListener(myPropertyChangeListener)
   myPoint.setLocation(20, 30)
 }

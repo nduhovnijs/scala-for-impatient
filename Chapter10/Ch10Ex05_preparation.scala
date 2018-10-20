@@ -2,7 +2,7 @@ import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-trait myPropertyChangeSupport {
+trait MyPropertyChangeSupport {
   private val pcs = new PropertyChangeSupport(this) 
   
   def addPropertyChangeListener(listener: PropertyChangeListener) {
@@ -62,9 +62,9 @@ trait myPropertyChangeSupport {
   }
 }
 
-// Proving that trait myPropertyChangeSupport is working by testing it on same MyBean, as in Java code
+// Proving that trait MyPropertyChangeSupport is working by testing it on same MyBean, as in Java code
 
-class MyBean extends java.io.Serializable with myPropertyChangeSupport {
+class MyBean extends java.io.Serializable with MyPropertyChangeSupport {
   var myValue: Int = 0;
 
   def getMyValue() = {
@@ -78,7 +78,7 @@ class MyBean extends java.io.Serializable with myPropertyChangeSupport {
   }
 }
 
-class myPropertyChangeListener extends PropertyChangeListener {
+class MyPropertyChangeListener extends PropertyChangeListener {
     def propertyChange(event: PropertyChangeEvent) {
         val property: String = event.getPropertyName()
         val oldValue: Int = event.getOldValue().asInstanceOf[Int]
@@ -89,7 +89,7 @@ class myPropertyChangeListener extends PropertyChangeListener {
 
 object Main extends App {
   val bn = new MyBean
-  val myPropertyChangeListener = new myPropertyChangeListener()
+  val myPropertyChangeListener = new MyPropertyChangeListener()
   bn.addPropertyChangeListener(myPropertyChangeListener)
   bn.setMyValue(5)
 }

@@ -29,7 +29,7 @@ class MyBean implements java.io.Serializable {
     public MyBean() {}
 }
 
-class myPropertyChangeListener implements PropertyChangeListener {
+class MyPropertyChangeListener implements PropertyChangeListener {
     public void propertyChange(PropertyChangeEvent event) {
         String property = event.getPropertyName();
         Integer oldValue = (Integer) event.getOldValue();
@@ -41,7 +41,7 @@ class myPropertyChangeListener implements PropertyChangeListener {
 public class Ch10Ex05 {
     public static void main(String[] args) {
         MyBean bn = new MyBean();
-        PropertyChangeListener myPropertyChangeListener = new myPropertyChangeListener();
+        PropertyChangeListener myPropertyChangeListener = new MyPropertyChangeListener();
         bn.addPropertyChangeListener(myPropertyChangeListener);
         bn.setMyValue(5);
     }
