@@ -1,0 +1,5 @@
+tmp*.scala
+*.class
+*.txt
+*.obj
+*.log

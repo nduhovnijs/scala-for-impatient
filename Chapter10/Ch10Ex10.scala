@@ -46,5 +46,4 @@ object Main extends App {
   }
 
   fis.close()
-  fis.close()
 }
