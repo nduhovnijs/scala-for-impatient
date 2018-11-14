@@ -1,0 +1,46 @@
+import scala.collection.mutable.ArrayBuffer
+
+// Is ArrayBuffer really necessary?
+
+/*
+class Table {
+  var state = ""
+
+  def |(arg: String) {
+    s"<td>${arg}</td>" 
+  }
+
+  def ||(arg: String) {
+    state += s"</tr><tr><td>${arg}</td>"
+  }
+
+  override def toString =
+    s"<table><tr>${state}</tr></table>"
+}*/
+
+class Table(val state: String) {
+  def |(arg: String) {
+    println(s"${state}<td>${arg}</td>")
+    new Table(s"${state}<td>${arg}</td>")
+  }
+
+  def ||(arg: String) {
+    new Table(s"${state}</tr><tr><td>${arg}</td>")
+  }
+
+  override def toString =
+    s"<table><tr>${state}</tr></table>"
+}
+
+object Table {
+  def apply() =
+    new Table("")
+}
+  
+object Main extends App {
+  val t = new Table("")
+  val p = t | "Java" //gotta return new Table
+  println(p)
+
+  //println(Table() | "Java")
+}
