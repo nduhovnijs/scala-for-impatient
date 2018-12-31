@@ -12,13 +12,6 @@ class XMLElement(val name: String, var value: String = "", val attributes: Map[S
     }
   }
 
-  def applyDynamicNamed(name: String)(args: (String, String)): XMLElement = {
-    children.find(x => (x.name == name) && (x.attributes(args._1) == args._2)) match {
-      case Some(i) => i
-      case None => new XMLElement("notFound")
-    }
-  }
-
   def add(elem: XMLElement): XMLElement = {
     children += elem
     this
