@@ -2,7 +2,7 @@ import scala.collection.mutable.ListBuffer
 import scala.collection.mutable.Map
 import scala.language.dynamics
 
-class XMLElement(val name: String, val value: String = "", val attributes: Map[String, String] = Map()) extends Dynamic {
+class XMLElement(val name: String, var value: String = "", val attributes: Map[String, String] = Map()) extends Dynamic {
   val children: ListBuffer[XMLElement] = ListBuffer()
 
   def selectDynamic(name: String): XMLElement = {
@@ -19,13 +19,16 @@ class XMLElement(val name: String, val value: String = "", val attributes: Map[S
     }
   }
 
+  def add(elem: XMLElement): XMLElement = {
+    children += elem
+    this
+  }
+
   override def toString = s"${name}: ${value}"
 }
 
 class XMLBuilder extends Dynamic {
   def applyDynamicNamed(elemName: String)(args: (String, String)*): XMLElement = {
-    //todo: rewrite to args without map
-    //todo: consider getting rid of listbuffer
     val attrs = Map[String, String]()
     for ((k, v) <- args)
       attrs(k) = v
@@ -33,43 +36,15 @@ class XMLBuilder extends Dynamic {
   }
 }
 
-/*
-<html>
-  <body>
-    <ul id="42">
-      <li>Hey you</li>
-    </ul>
-    <ul id="43">
-      <li>Out there in the cold getting lonely getting old can you feel me?</li>
-  </body>
-</html>
-*/
-
-// TODO: check if chain not exists
-
 object Main extends App {
   val builder = new XMLBuilder
-  val myElem = builder.ul(id="42", style="list-style: lower-alpha;")
-  println(s"${myElem}, ${myElem.attributes("style")}")
 
-  /*
-  val ul42 = new XMLElement(name = "ul", attributes = Map("id" -> "42"))
-  ul42.children += new XMLElement(name = "li", value = "Hey you")
+  val ul1 = builder.ul(id = "42", style = "list-style: lower-alpha;")
+  ul1.value = "test"
+  println(s"${ul1}, ${ul1.attributes("style")}")
 
-  val ul43 = new XMLElement(name = "ul", attributes = Map("id" -> "43"))
-  ul43.children += new XMLElement(name = "li", value = "Out there in the cold getting lonely getting old can you feel me?")
-
-  val body = new XMLElement(name = "body")
-  body.children += ul42
-  body.children += ul43
-
-  val html = new XMLElement(name = "html")
-  html.children += body
-
-  val rootElement = new XMLElement(name = "rootElement")
-  rootElement.children += html
-
-  val pretest = rootElement.html.body.ul(id="42").li
-  println(pretest)
-  */
+  // nested
+  val ul2WithLi1 = builder.ul(id = "43", style = "list-style: lower-alpha;").add(builder.li(id = "431"))
+  ul2WithLi1.li.value = "test2"
+  println(s"${ul2WithLi1.li}")
 }

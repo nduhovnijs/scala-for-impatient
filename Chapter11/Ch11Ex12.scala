@@ -33,8 +33,6 @@ class XMLElement(val name: String, val value: String = "", val attributes: Map[S
 </html>
 */
 
-// TODO: check if chain not exists
-
 object Main extends App {
   val ul42 = new XMLElement(name = "ul", attributes = Map("id" -> "42"))
   ul42.children += new XMLElement(name = "li", value = "Hey you")
