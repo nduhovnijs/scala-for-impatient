@@ -5,6 +5,7 @@ Conspect of useful higher-order functions:
 * filter - yields elements that match particular condition
 * reduceLeft - applies binary function to all elements of sequence
 * sortWith - binary function for sorting
+* zip - zip 2 arrays into array of tuples
 */
 
 /*
