@@ -43,9 +43,9 @@ object Main extends App {
   //Elapsed time: 5668152291ns
   //Elapsed time: 5636521779ns
   //Elapsed time: 5733769006ns
-  
+
   //Whoa! Resuls are the same.
-  //So, we have different results only when placing functions nearby.
-  //Reason - probably, some optimisation in second case (like compiler understands that list is same).
-  //As for first case - it's probably some GC(?) to run that slows things down.
+  //So, we have different results only when placing two different executions one after one.
+  //Probably, some optimisation takes place in second case (like compiler understands that list is same).
+  //As for first case - it's probably some GC-ish(?) to run after first operation that slows things down.
 }
