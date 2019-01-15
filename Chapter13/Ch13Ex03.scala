@@ -25,8 +25,8 @@ object Main extends App {
   // If order is reverse, it's
   //time(a.indices.reverse.filter(_ % 2 == 0).map(a.remove(_)))
   //time(a.indices.filter(_ % 2 == 0).foldLeft(ListBuffer[Int]())((l, i) => l += a(i)))
-  //Elapsed time: 5670824048ns
-  //Elapsed time: 1627903403ns
+  // Elapsed time: 5670824048ns
+  // Elapsed time: 1627903403ns
 
   // So, in any case creating new list is faster.
   // However, there seem some weird optimisation to be going on in second case.
@@ -34,18 +34,24 @@ object Main extends App {
   // I'll compare it with leaving out only one option per execution.
   // Results of
   //time(a.indices.reverse.filter(_ % 2 == 0).map(a.remove(_)))
-  //Elapsed time: 5517782471ns
-  //Elapsed time: 5589321406ns
-  //Elapsed time: 6015606239ns
+  // Elapsed time: 5517782471ns
+  // Elapsed time: 5589321406ns
+  // Elapsed time: 6015606239ns
 
   // Results of
   time(a.indices.filter(_ % 2 == 0).foldLeft(ListBuffer[Int]())((l, i) => l += a(i)))
-  //Elapsed time: 5668152291ns
-  //Elapsed time: 5636521779ns
-  //Elapsed time: 5733769006ns
+  // Elapsed time: 5668152291ns
+  // Elapsed time: 5636521779ns
+  // Elapsed time: 5733769006ns
 
   //Whoa! Resuls are the same.
   //So, we have different results only when placing two different executions one after one.
   //Probably, some optimisation takes place in second case (like compiler understands that list is same).
   //As for first case - it's probably some GC-ish(?) to run after first operation that slows things down.
+
+  //Bonus: tried to evaluate performance with copying to new List and not ListBuffer. Results are horrible:
+  //time(a.indices.filter(_ % 2 == 0).foldLeft(List[Int]())((l, i) => l :+ a(i)))
+  // Elapsed time: 12609786041ns
+  // Elapsed time: 13374231608ns
+  // Elapsed time: 21509093748ns
 }
