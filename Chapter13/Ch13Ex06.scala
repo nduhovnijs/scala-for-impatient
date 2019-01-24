@@ -20,8 +20,8 @@ object Main extends App {
 
   // How to modify one of them to reserve the list?
   // option a:
-  (lst :\ List[Int]())((coll, elem) => elem :+ coll)
+  println((lst :\ List[Int]())((coll, elem) => elem :+ coll))
 
   // option b:
-  (List[Int]() /: lst)((coll, elem) => elem +: coll)
+  println((List[Int]() /: lst)((coll, elem) => elem +: coll))
 }
