@@ -1,17 +1,3 @@
-/*
-Extend the tree in the preceding exercise so that each nonleaf node stores an operator in addition to the child nodes.
-Then write a function eval that computes the value. For example, the tree Click here to view code image
-      +
-    /| \
-  *  2  -
- / \    |
-3   8   5
-
-has value (3 × 8) + 2 + (–5) = 21. Pay attention to the unary minus.
-            24    26
-*/
-
-
 abstract class BinaryTree
 case class Leaf(value: Int) extends BinaryTree
 case class Node(operation: Char, args: BinaryTree*) extends BinaryTree
